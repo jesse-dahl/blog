@@ -30,6 +30,16 @@ app.get("/compose", function (req, res) {
   res.render("compose");
 });
 
+app.post("/compose", function (req, res) {
+  let post = {
+    postTitle: req.body.postTitle,
+    postBody: req.body.postBody
+  }
+
+  console.log(post.postTitle);
+  console.log(post.postBody);
+});
+
 app.listen(3000, function () {
   console.log("Listening on port 3000");
 });

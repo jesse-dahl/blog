@@ -15,10 +15,20 @@ app.use(parser.urlencoded({ extended: true }));
 
 
 app.get("/", function (req, res) {
-  res.render("home")
+  res.render("home", { homeContent: homeStartingContent });
 });
 
+app.get("/about", function (req, res) {
+  res.render("about", { aboutContent: aboutContent });
+})
 
+app.get("/contact", function (req, res) {
+  res.render("contact", { contactContent: contactContent });
+})
+
+app.get("/compose", function (req, res) {
+  res.render("compose");
+});
 
 app.listen(3000, function () {
   console.log("Listening on port 3000");

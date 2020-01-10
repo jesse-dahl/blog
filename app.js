@@ -44,8 +44,6 @@ app.get("/posts/:postId", function (req, res) {
         postTitle: post.title,
         postBody: post.body
       });
-    } else {
-      console.log("Match Not Found :(");
     }
   });
 });

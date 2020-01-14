@@ -1,7 +1,25 @@
 const express = require("express");
 const parser = require("body-parser");
 const ejs = require("ejs");
+const PORT = 3000;
+const mongoose = require('mongoose');
 const _ = require('lodash');
+
+mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser: true, useUnifiedTopology: true });
+
+const postSchema = new mongoose.Schema({
+  title: String,
+  body: String
+});
+
+const Post = new mongoose.model("Post", postSchema);
+
+const demo = new Post({
+  title: "This is a test title",
+  body: "This is a test body"
+});
+
+demo.save();
 
 const app = express();
 
@@ -59,6 +77,6 @@ app.post("/compose", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log("Listening on port 3000");
 });

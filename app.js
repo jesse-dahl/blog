@@ -58,10 +58,14 @@ app.get("/posts/:postId", function (req, res) {
   const requestedTitle = _.lowerCase(req.params.postId);
 
   Post.findOne({ title: req.params.postId }, function (err, post) {
-    res.render("post", {
-      postTitle: post.title,
-      postBody: post.body
-    });
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("post", {
+        postTitle: post.title,
+        postBody: post.body
+      });
+    }
   });
 });
 

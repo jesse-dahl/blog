@@ -19,8 +19,6 @@ const demo = new Post({
   body: "This is a test body"
 });
 
-demo.save();
-
 const app = express();
 
 const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -67,12 +65,20 @@ app.get("/posts/:postId", function (req, res) {
 });
 
 app.post("/compose", function (req, res) {
-  let post = {
-    title: req.body.postTitle,
-    body: req.body.postBody
-  };
+  const titleContent = req.body.postTitle;
+  const bodyContent = req.body.postBody;
 
-  posts.push(post);
+  const newPost = new Post({
+    title: titleContent,
+    body: bodyContent
+  })
+
+  newPost.save();
+
+  Post.find({}, function (err, posts) {
+    //Write a forEach loop that can print out each title
+    console.log(posts.title);
+  });
 
   res.redirect("/");
 });

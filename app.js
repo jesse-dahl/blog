@@ -4,6 +4,7 @@ const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const app = express();
+const mongooseServer = "mongodb+srv://admin-jesse:RKCMDj$m08@cluster0-1mvwr.mongodb.net/blogDB";
 
 mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser: true, useUnifiedTopology: true });
 

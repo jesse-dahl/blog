@@ -4,9 +4,9 @@ const ejs = require("ejs");
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const app = express();
-const mongooseServer = "mongodb+srv://admin-jesse:RKCMDj$m08@cluster0-1mvwr.mongodb.net/blogDB";
+const mongooseConnection = "mongodb+srv://admin-jesse:RKCMDj$m08@cluster0-1mvwr.mongodb.net/blogDB";
 
-mongoose.connect(mongooseServer, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongooseConnection, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const postSchema = new mongoose.Schema({
   title: String,

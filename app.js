@@ -6,7 +6,7 @@ const _ = require('lodash');
 const app = express();
 const mongooseServer = "mongodb+srv://admin-jesse:RKCMDj$m08@cluster0-1mvwr.mongodb.net/blogDB";
 
-mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongooseServer, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const postSchema = new mongoose.Schema({
   title: String,
@@ -80,6 +80,8 @@ app.post("/compose", function (req, res) {
   newPost.save(function (err) {
     if (!err) {
       res.redirect("/");
+    } else {
+      console.log(err);
     }
   });
 

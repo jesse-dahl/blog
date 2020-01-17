@@ -1,0 +1,11 @@
+uml diagrams for project:
+
+Requirements:
+  Conceptual classs diagrams
+  use case
+  activity
+
+Design:
+  Detailed class diagram 
+    -Design pattern
+  Sequence Diagram
